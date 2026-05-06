@@ -35,7 +35,7 @@ public class Main {
         int age = in.nextInt();
         in.nextLine();
 
-        System.out.print("Exercise.Gender (F/M): ");
+        System.out.print("Gender (F/M): ");
         char gender = in.next().toUpperCase().charAt(0);
         in.nextLine();
 
