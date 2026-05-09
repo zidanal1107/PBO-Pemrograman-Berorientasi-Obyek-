@@ -19,7 +19,7 @@ public abstract class Character implements SpecialAbility {
         System.out.println("====" + GAME_NAME + "====");
         System.out.println("Name    : " + name);
         System.out.println("Age     : " + age);
-        System.out.println("Exercise.Gender  : " + gender);
+        System.out.println("Gender  : " + gender);
         System.out.println("Role    : " + role);
     }
 
