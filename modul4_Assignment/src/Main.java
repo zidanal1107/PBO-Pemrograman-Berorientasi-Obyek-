@@ -72,12 +72,12 @@ public class Main {
 
         int option;
         do {
-            System.out.println("=== Input Building Status ===");
+            System.out.println("=== Select Building Status ===");
             System.out.println("1. Public buildings");
             System.out.println("2. Commercial");
             System.out.println("3. View building");
             System.out.println("0. Exit");
-            System.out.print("Input Status: ");
+            System.out.print("Select Status: ");
             option = in.nextInt();
             in.nextLine();
 
