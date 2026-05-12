@@ -48,20 +48,20 @@ public class Main {
 
         switch (option) {
             case 1:
-                System.out.print("Input assessed value: ");
-                double assessedValue = in.nextDouble();
-                in.nextLine();
-
-                build = new PublicBuildings(name, address, numberOfFloor, status, type, assessedValue);
-                System.out.println("Success add " + build.getName());
-                System.out.println();
-                break;
-            case 2:
                 System.out.print("Input monthly revenue: ");
                 double monthlyRevenue = in.nextDouble();
                 in.nextLine();
 
-                build = new Commercial(name, address, numberOfFloor, status, type, monthlyRevenue);
+                build = new PublicBuildings(name, address, numberOfFloor, status, type, monthlyRevenue);
+                System.out.println("Success add " + build.getName());
+                System.out.println();
+                break;
+            case 2:
+                System.out.print("Input tax of month: ");
+                double tax = in.nextDouble();
+                in.nextLine();
+
+                build = new Commercial(name, address, numberOfFloor, status, type, tax);
                 System.out.println("Success add " + build.getName());
                 System.out.println();
                 break;

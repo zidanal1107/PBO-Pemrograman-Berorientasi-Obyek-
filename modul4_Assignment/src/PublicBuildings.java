@@ -1,9 +1,9 @@
-public class PublicBuildings extends Building implements Taxable {
-    private double assessedValue ;
+public class PublicBuildings extends Building {
+    private double monthlyRevenue ;
 
-    public PublicBuildings(String name, String address, int numberOfFloor, BuildingStatus status, String type, double assessedValue ) {
+    public PublicBuildings(String name, String address, int numberOfFloor, BuildingStatus status, String type, double monthlyRevenue ) {
         super(name, address, numberOfFloor, status, type);
-        this.assessedValue  = assessedValue ;
+        this.monthlyRevenue  = monthlyRevenue ;
     };
 
     @Override
@@ -14,12 +14,7 @@ public class PublicBuildings extends Building implements Taxable {
         System.out.println("Number of floor     : " + numberOfFloor);
         System.out.println("Status of building  : " + status);
         System.out.println("Building type       : " + type);
-        System.out.printf("Assessed value      : %.2f\n", assessedValue);
-        System.out.printf("Tax of month        : %.2f\n", calculateTax());
+        System.out.printf("monthly revenue      : %.2f\n", monthlyRevenue);
     }
 
-    @Override
-    public double calculateTax() {
-        return assessedValue * BASE_TAX_RATE;
-    }
 }

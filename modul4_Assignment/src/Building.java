@@ -1,9 +1,9 @@
 public abstract class Building {
-    protected String name;
-    protected String address;
-    protected int numberOfFloor;
-    protected BuildingStatus status;
-    protected String type;
+    protected final String name;
+    protected final String address;
+    protected final int numberOfFloor;
+    protected final BuildingStatus status;
+    protected final String type;
 
     public Building(String name, String address, int numberOfFloor, BuildingStatus status, String type) {
         this.name = name;
