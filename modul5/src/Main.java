@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Main {
     static Scanner in = new Scanner(System.in);
@@ -91,9 +92,12 @@ public class Main {
                     hero.add(new Tank(name, age, heroGender, "Tank", stunDuration));
                     System.out.println(">> Tank added successfully!");
                     break;
+                default:
+                    throw new InvalidGameRuleEception("Class must be 1 - 5!");
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (InvalidGameRuleEception e) {
+            System.out.println(e);
+            inputHeroes(option);
         }
     }
 
