@@ -2,7 +2,7 @@ public class Hospital extends Building {
     protected int beds;
 
     public Hospital(String name, String address, int numberOfFloor, StatusBuilding status, int beds)
-        throws InvalidDataException{
+        throws InvalidDataException {
         super(name, address, numberOfFloor, status);
         this.beds = beds;
     }
