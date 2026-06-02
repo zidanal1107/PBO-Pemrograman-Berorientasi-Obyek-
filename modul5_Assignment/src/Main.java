@@ -62,7 +62,7 @@ public class Main {
                 list.add(h);
                 System.out.println(">> Success: Hospital added.");
             } else {
-                throw new InvalidDataException("[ERROR] your format input");
+                throw new InvalidDataException("[ERROR] duplicat input");
             }
 
         } catch (InputMismatchException e) {
