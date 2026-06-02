@@ -53,7 +53,6 @@ public class Main {
         contentPanel.add(resultLabel);
         contentPanel.add(replayButton);
 
-        // EVENT TOMBOL TEBAK
         guessButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -117,7 +116,6 @@ public class Main {
             }
         });
 
-        // EVENT TOMBOL MAIN LAGI
         replayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
