@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainApp extends JFrame {
+class App extends JFrame {
 
     private BuildingManager manager = new BuildingManager();
 
@@ -17,9 +17,9 @@ public class MainApp extends JFrame {
     private JPanel specialPanel;
     private JLabel lblSpecial;
 
-    public MainApp() {
+    public App() {
         setTitle("Smart City Management System");
-        setSize(1000, 600); // Disesuaikan agar lebih proporsional
+        setSize(1000, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -31,25 +31,19 @@ public class MainApp extends JFrame {
     private void initComponents() {
         setLayout(new BorderLayout(10, 10));
 
-        // --------------------------------
         // HEADER
-        // --------------------------------
         JLabel title = new JLabel("SMART CITY MANAGEMENT SYSTEM", SwingConstants.CENTER);
         title.setFont(new Font("Segoe UI", Font.BOLD, 24));
         title.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(title, BorderLayout.NORTH);
 
-        // --------------------------------
         // TABLE
-        // --------------------------------
         String[] columns = {"Name", "Address", "Floors", "Status", "Type", "Detail"};
         model = new DefaultTableModel(columns, 0);
         table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
 
-        // --------------------------------
         // FORM COMPONENTS
-        // --------------------------------
         JPanel formPanel = new JPanel(new GridLayout(8, 2, 10, 10));
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -62,9 +56,7 @@ public class MainApp extends JFrame {
         txtRevenue = new JTextField();
         lblSpecial = new JLabel("Number Of Beds");
 
-        // --------------------------------
         // SPECIAL PANEL (CardLayout)
-        // --------------------------------
         specialPanel = new JPanel(new CardLayout());
         specialPanel.add(txtBeds, "Hospital");
         specialPanel.add(txtRevenue, "Market");
@@ -95,9 +87,7 @@ public class MainApp extends JFrame {
         formPanel.add(lblSpecial);
         formPanel.add(specialPanel);
 
-        // --------------------------------
         // BUTTONS & EVENTS
-        // --------------------------------
         JButton btnAdd = new JButton("Add Building");
         JButton btnDelete = new JButton("Delete Building");
 
@@ -108,17 +98,13 @@ public class MainApp extends JFrame {
         btnAdd.addActionListener(e -> addBuildingEvent());
         btnDelete.addActionListener(e -> deleteBuildingEvent());
 
-        // --------------------------------
         // RIGHT PANEL
-        // --------------------------------
         JPanel rightPanel = new JPanel(new BorderLayout());
         rightPanel.setPreferredSize(new Dimension(350, 0));
         rightPanel.add(formPanel, BorderLayout.CENTER);
         rightPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-        // --------------------------------
         // SPLITPANE
-        // --------------------------------
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane, rightPanel);
         splitPane.setResizeWeight(0.7); // 70% area untuk tabel, 30% untuk form
         add(splitPane, BorderLayout.CENTER);
@@ -171,14 +157,7 @@ public class MainApp extends JFrame {
     private void refreshTable() {
         model.setRowCount(0);
         for (Building b : manager.getBuildings()) {
-            model.addRow(new Object[]{
-                    b.getName(),
-                    b.getAddress(),
-                    b.getFloors(),
-                    b.getStatus(),
-                    b.getType(),
-                    b.getDetail()
-            });
+            model.addRow(new Object[]{ b.getName(), b.getAddress(), b.getFloors(), b.getStatus(), b.getType(), b.getDetail()  });
         }
     }
 
@@ -192,13 +171,10 @@ public class MainApp extends JFrame {
         cbType.setSelectedIndex(0);
         txtName.requestFocus();
     }
+}
 
+public class MainApp {
     public static void main(String[] args) {
-        // Menggunakan Look and Feel bawaan OS agar UI lebih rapi
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception ignored) {}
-
-        SwingUtilities.invokeLater(MainApp::new);
+        App app =  new App();
     }
 }
