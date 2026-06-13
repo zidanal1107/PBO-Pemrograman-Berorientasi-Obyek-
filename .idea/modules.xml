@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PBO.iml" filepath="$PROJECT_DIR$/.idea/PBO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Tugas1/Tugas1.iml" filepath="$PROJECT_DIR$/Tugas1/Tugas1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UAP_Latihan/UAP_Latihan.iml" filepath="$PROJECT_DIR$/UAP_Latihan/UAP_Latihan.iml" />
       <module fileurl="file://$PROJECT_DIR$/modul1/modul1.iml" filepath="$PROJECT_DIR$/modul1/modul1.iml" />
       <module fileurl="file://$PROJECT_DIR$/modul2/modul2.iml" filepath="$PROJECT_DIR$/modul2/modul2.iml" />
       <module fileurl="file://$PROJECT_DIR$/modul3/modul3.iml" filepath="$PROJECT_DIR$/modul3/modul3.iml" />
