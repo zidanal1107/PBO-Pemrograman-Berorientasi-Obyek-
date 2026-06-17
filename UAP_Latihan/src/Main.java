@@ -1,144 +1,137 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // deklarasi array
-        ArrayList<Hewan> hewans = new ArrayList<>();
+        String merk1 = "a";
+        String merk2 = "b";
 
-        // polimirpism
-        Hewan k1 = new Kucing("A",10,Gender.LAKILAKI,1000000, "Orange");
-        Hewan k2 = new Kucing("B",12,Gender.PEREMPUAN,1100000, "Hitam");
+        double harga1 = 200000;
+        double harga2 = 220000;
 
-        // Menambahkan ke array
-        hewans.add(k1);
-        hewans.add(k2);
+        int volumeAwal1 = 50;
+        int volumeAwal2 = 90;
 
-        // foreach untuk menampilkan semua data
-        for (Hewan h : hewans) {
-            h.info();
-            System.out.println("Ini yang info lengkap");
-            h.info(true);
-            System.out.println("Suara:");
-            h.suara();
+        Perangkat t1 = new Televisi(merk1, harga1, volumeAwal1);
+        Televisi t2 = new Televisi(merk2, harga2, volumeAwal2);
+
+        ArrayList<Perangkat> perangkats = new ArrayList<>();
+
+        perangkats.add(t1);
+        perangkats.add(t2);
+
+        for (Perangkat p : perangkats) {
+            System.out.println("Info tidak detail");
+            p.info();
+            System.out.println("Info yang detail");
+            p.info(true);
             System.out.println();
         }
 
-        // test untuk setter dan getter
-        System.out.println();
-        System.out.println("Nama sebelum diubah: "+k1.getNama());
-        k1.setNama("K");
-        System.out.println("Nama sebelum diubah: "+k1.getNama());
+        Scanner in = new Scanner(System.in);
+        System.out.println("Merk televisi1 sebelum diganti: "+t1.getMerk());
+        System.out.print("Masukkan merk untuk televisi: ");
+        merk1 = in.nextLine();
+        t1.setMerk(merk1);
+        System.out.println("Setelah diubah: "+t1.getMerk());
 
-        System.out.println("Nama sebelum diubah: "+k2.getNama());
-        k2.setNama("LP");
-        System.out.println("Nama sesudah diubah: "+k2.getNama());
+        System.out.println("Harga televisi1 sebelum diganti: "+t1.getHarga());
+        System.out.print("Masukkan harga untuk televisi: ");
+        harga1 = in.nextDouble();
+        in.nextLine();
+        t1.setHarga(harga1);
+        System.out.println("Setelah diubah: "+t1.getHarga());
+
+        t2.operasikan();
+        System.out.println("Ubah volume? (0 untuk tidak ubah 1 untuk ubah): ");
+        int pilihan = in.nextInt();
+        in.nextLine();
+        if (pilihan == 1) {
+            System.out.println("Volume awal: "+t2.getVolume());
+            System.out.println("Ubah volume: ");
+            volumeAwal2 = in.nextInt();
+            t2.setVolume(volumeAwal2);
+            in.nextLine();
+            System.out.println("Berhasil di ubah");
+            t2.operasikan();
+        } else {
+            System.out.println("Gagal diubah");
+        }
 
     }
 }
 
-// class abstract
-abstract class Hewan {
-    private String nama;
-    private int umur;
-    private Gender gender;
-    private int harga;
+abstract class Perangkat {
+    private String merk;
+    private double harga;
 
-    public Hewan(String nama, int umur, Gender gender, int harga) {
-        this.nama = nama;
-        this.umur = umur;
-        this.gender = gender;
+    public Perangkat(String merk, double harga) {
+        this.merk = merk;
         this.harga = harga;
     }
 
-    // getter setter
-    public String getNama() {
-        return nama;
+    public String getMerk() {
+        return merk;
     }
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
-    public int getUmur() {
-        return umur;
-    }
-    public void setUmur(int umur) {
-        this.umur = umur;
+    public void setMerk(String merk) {
+        this.merk = merk;
     }
 
-    public Gender getGender() {
-        return gender;
-    }
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public int getHarga() {
+    public double getHarga() {
         return harga;
     }
-    public void setHarga(int harga) {
+    public void setHarga(double harga) {
         this.harga = harga;
     }
 
-    // abstract method
-    abstract void suara();
-    abstract void info();
-    abstract void info(boolean status);
+    public abstract void operasikan();
+    public abstract void info();
+    public abstract void info(boolean detail);
 }
 
-class Kucing extends Hewan implements Pajak{
-    private String warna;
+class Televisi extends Perangkat implements HitungPajak{
+    private int volume;
 
-    public Kucing(String nama, int umur, Gender gender, int harga,String warna) {
-        super(nama, umur, gender, harga);
-        this.warna = warna;
+    public Televisi(String merk, double harga, int volume) {
+        super(merk, harga);
+        this.volume = volume;
     }
 
-    // getter setter
-    public String getWarna() {
-        return warna;
+    public int getVolume() {
+        return volume;
     }
-    public void setWarna(String warna) {
-        this.warna = warna;
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
 
-    // override untuk suara dan info
     @Override
-    void suara() {
-        System.out.println("Miauwww");
+    public void operasikan() {
+        System.out.printf("Televisi dengan merk %s sedang di operasikan",getMerk());
+        System.out.println("Dengan volume: "+getVolume());
     }
+
     @Override
-    void info() {
-        System.out.println("Kucing:");
-        System.out.println("Warna   : "+getWarna());
+    public void info() {
+        System.out.println("Televisi:");
+        System.out.println("Merk    : "+getMerk());
     }
-    // overloading untuk emnampilkan info yang lebih lengkap
-    void info(boolean status) {
+
+    @Override
+    public void info(boolean detail) {
         info();
-
-        if (status) {
-            System.out.println("Nama    : "+getNama());
-            System.out.println("Umur    : "+getUmur());
-            System.out.println("Gender  : "+getGender());
-            System.out.println("Harga   : "+jumlahPajak());
+        if (detail) {
+            System.out.println("Harga   : "+getHarga());
+            System.out.println("Volume  : "+getVolume());
         }
     }
 
-    // untuk menghitung harga
     @Override
-    public int jumlahPajak() {
+    public double HitungHarga() {
         return getHarga() + pajak;
     }
 }
 
-// interface untuk menghitung pajak
-interface Pajak {
-    // final untuk nilai pajak yang constanta
-    final int pajak = 10000;
-    // untuk menghitung pajak
-    abstract int jumlahPajak();
-}
-
-// enum gender
-enum Gender {
-    LAKILAKI,PEREMPUAN
+interface HitungPajak {
+    final double pajak = 0.9;
+    abstract double HitungHarga();
 }
